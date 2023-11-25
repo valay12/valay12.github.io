@@ -10,18 +10,67 @@
 <body>
     <div id="page">
         <form>
-            <label for="amount">Amount you can pay every month:</label><br>
-            <input type="range" id="amount" name="amount" min="1000" max="10000" step="50" value="5000"
-                oninput="updateSliderValue()"><br>
-            <span id="sliderValue">$5,000</span><br><br> <!-- Display slider value -->
+            <label for="paymentSlider">Monthly payment:</label><br>
+            <input
+                type="range"
+                class="payment slider"
+                id="paymentSlider"
+                name="amount"
+                min="1000"
+                max="10000"
+                step="50"
+                value="5000"
+                oninput="updateValue('payment', 'paymentSlider')"
+            >
+            <input
+                id="paymentText"
+                type="text"
+                class="payment text"
+                value="5000"
+                onblur="numToDollars('paymentText')"
+                onfocus="dollarsToNum('paymentText')"
+                oninput="updateValue('payment', 'paymentText')"
+            >
+            <br>
 
             <label for="interestRate">Interest rate:</label><br>
-            <input type="text" id="interestRate" name="interestRate" placeholder="Enter interest rate"> %<br><br>
+            <input
+                type="text"
+                id="interestRate"
+                name="interestRate"
+                placeholder="Enter Annual Interest Rate"
+            >
+             %<br><br>
+            
+            <label for="term">Years:</label>
+            <br>
+            <input
+                id="term"
+                placeholder="Years"
+            ><br><br>
 
-            <input type="button" value="Calculate" onclick="calculate()"><br><br>
-
-            <label for="borrowAmount">You can borrow:</label><br>
-            <output id="borrowAmount">0</output>
+            <label for="principalSlider">Loan Principal:</label><br>
+            <input
+                type="range"
+                class="principal slider"
+                id="principalSlider"
+                name="amount"
+                min="100000"
+                max="2000000"
+                step="5000"
+                value="200000"
+                oninput="updateValue('principal', 'principalSlider')"
+            >
+            <input
+                id="principalText"
+                type="text"
+                class="principal text"
+                value="200000"
+                onblur="numToDollars('principalText')"
+                onfocus="dollarsToNum('principalText')"
+                oninput="updateValue('principal', 'principalText')"
+            >
+            <br>
         </form>
     </div>
 
